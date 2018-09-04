@@ -1,16 +1,5 @@
-print("Hello, Jack!")
+firstname = input('Please enter your first name: ')
 
-#Q1
-print("Hello, world!"
+lastname = input('Please enter your last name: ')
 
-#Q2
-print("Hello, world!)
-
-#Q3
-print(+2)
-print(2++2)
-#Q4
-print(02)
-
-#Q5
-print(32 12)
+print('Hello, ', firstname, ' ', lastname)
