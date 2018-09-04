@@ -27,4 +27,4 @@ print('The total wholesale cost for 60 copies is {:.2f}'.format(result2))
 
 #Q3
 result3 = ((89-82)/82)*100
-print('The total wholesale cost for 60 copies is {:04.1f}%'.format(result3))
+print('The average score increases by {:04.1f}%'.format(result3))
