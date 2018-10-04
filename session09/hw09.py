@@ -3,6 +3,11 @@ line = fin.readline()
 # word = line.strip()
 # print(word)
 
+q = 0
+for line in fin:
+    line = line.strip()
+    q = q + 1
+print(q)
 
 
 def read_long_words():
@@ -106,6 +111,7 @@ def is_abecedarian(word):
     #         return False
     #     previous = c
     # return True
+    pass
 
 
 
