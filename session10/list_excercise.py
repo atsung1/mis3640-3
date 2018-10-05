@@ -31,10 +31,11 @@ def cumsum(t):
     [1, 3, 6]
     """
     k = 0
-    for i in t:
-        k = k + i
-    t.append(k)
-    return t
+    res = []
+    for x in t:
+        k += x
+        res.append(k)
+    return res
 
 t = [1, 2, 3]
 print(cumsum(t))
@@ -71,10 +72,9 @@ def chop(t):
     >>> t
     [2, 3]
     """
-    f = t[0]
-    l = t[-1]
-    t.remove(f)
-    t.remove(l)
+    del t[0]
+    del t[-1]
+    return
 
 
 t = [1, 2, 3, 4]
@@ -92,13 +92,7 @@ def is_sorted(t):
     >>> is_sorted(['b', 'a'])
     False
     """
-    previous = t[0]
-    for i in t:
-        if i < previous:
-            return False
-        else:
-            previous = i
-    return True
+    return t == sorted(t)
 
 is_sorted([1, 2, 2])
 is_sorted(['b', 'a'])
@@ -119,16 +113,7 @@ def is_anagram(word1, word2):
     >>> is_anagram([1, 2, 2], [2, 1, 2])
     Ture
     """
-    if len(word1) != len(word2):
-        return False
-    else:
-        k = 1
-        for i in word1:
-            if i != word2[-k]:
-                return False
-            else:
-                k = k + 1
-        return True
+    return sorted(word1) == sorted(word2)
 
 
 def has_duplicates(s):
@@ -144,7 +129,7 @@ def has_duplicates(s):
     for i in s:
         if s.count(i) > 1:
             return True
-        return False
+    return False
 
 
 def has_adjacent_duplicates(s):
@@ -159,11 +144,10 @@ def has_adjacent_duplicates(s):
     >>> print(has_adjacent_duplicates('abbc'))
     True
     """
-    k = 0
-    for i in len(s):
-        if s[i] == s[i+1] or (s[i] == s[i-1] and i != 0):
+    for i in range(len(s)-1):    
+        if s[i] == s[i+1]:
             return True
-        return False
+    return False
 
             
 
