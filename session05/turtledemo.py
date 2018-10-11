@@ -1,14 +1,14 @@
-# import turtle
-# from math import pi
+import turtle
+from math import pi
 
-# # jack = turtle.Turtle()
+jack = turtle.Turtle()
 
-# # for i in range(360):
+# for i in range(360):
 
-# #     jack.fd(1)
-# #     jack.lt(1)
+jack.fd(100)
+jack.lt(100)
 
-# # turtle.mainloop()
+turtle.mainloop()
 
 
 # def polygon(t, length, n):
@@ -29,19 +29,19 @@
 
 # # circle(jack, 100)
 
-import turtle
-import math
+# import turtle
+# import math
 
-def arc(t, r, angle):
-    arc_length = 2 * math.pi * r * angle / 360
-    n = int(arc_length / 3) + 1
-    step_length = arc_length / n
-    step_angle = angle / n
+# def arc(t, r, angle):
+#     arc_length = 2 * math.pi * r * angle / 360
+#     n = int(arc_length / 3) + 1
+#     step_length = arc_length / n
+#     step_angle = angle / n
     
-    for i in range(n):
-        t.fd(step_length)
-        t.lt(step_angle)
+#     for i in range(n):
+#         t.fd(step_length)
+#         t.lt(step_angle)
 
-jack = turtle.Turtle()
-arc(jack, 20, 90)
-turtle.mainloop()
+# jack = turtle.Turtle()
+# arc(jack, 20, 90)
+# turtle.mainloop()
