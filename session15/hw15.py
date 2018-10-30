@@ -73,6 +73,24 @@ test_rectangle.height = 20
 test_rectangle.corner = test_point
 print(rect_in_circle(test, test_rectangle))
 
+def rect_circle_overlap(circle, rect):
+    rect_tl = Point()
+    rect_tl.x = rect.corner.x
+    rect_tl.y = rect.corner.y + rect.height
+    rect_tr = Point()
+    rect_tr.x = rect.corner.x + rect.width
+    rect_tr.y = rect.corner.y + rect.height
+    rect_br = Point()
+    rect_br.x = rect.corner.x + rect.width
+    rect_br.y = rect.corner.y
+    
+    cnrlst = [rect.corner, rect_tl, rect_tr, rect_br]
+
+    for corner in cnrlst:
+        if distance_between_points(corner, circle.center) < circle.radius:
+            return True
+    return False
+
 # def print_point(p):
 #     """Print a Point object in human-readable format."""
 #     print('({}, {}).'.format(p.x, p.y))
