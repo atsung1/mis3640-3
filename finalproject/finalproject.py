@@ -58,14 +58,15 @@ def getRGB_image(filepath):
 
     return allRectangles
 
+def getRGB_pixel(filepath):
+    # pulls the RGB values of that pixel and returns a list of the RGB code
+    im = Image.open(filepath)
+    rgb_im = im.convert('RGB')
+    output = []
+    for i in rgb_im.getpixel((0, 0)):
+        output.append(i)
+    return output
 
-
-# Translate the Color code to RGB
-def RGB(colorcode):
-    h = str(colorcode).lstrip('#')
-    return(list(int(h[i:i+2], 16) for i in (0, 2 ,4)))
-
-# print(RGB('#3E2435'))
 
 
 # pulls all data from a csv, should have brand name, name of makeup color, price, size, color code
@@ -80,11 +81,12 @@ def loadData(filepath):
         # make all rows into one list
         for row in reader:
             raw.append(row)
-    # translate the Color code into RGB code and replace the original color code
+    # loop through each row and loads RGB code of each file path
     for item in raw:
-        # delete items that do not have color codes
+        # skip items that do not have color codes
         if item[2] != "NA":
-            item.extend(RGB(item[2]))
+            code = getRGB_pixel(item[9])
+            item.extend(code)
     # make a connection to the database csv
     with open('Book1.csv', 'w', newline='') as csvfilew:
         data_writer = csv.writer(csvfilew, delimiter=',')
@@ -93,7 +95,7 @@ def loadData(filepath):
     # return the list with all information, added with RGB color code
     return raw
 
-print(loadData('Shiseido_products.csv'))
+
 
 # calculate square root of sum of squares for R G and B values between the target and option
 def getDistance(target,option):
@@ -119,7 +121,7 @@ def getMatches(list, filepath):
             # making sure it has color code
             if item[2] != 'NA':
                 # load R G and B into reference list
-                itemRGB = [item[8],item[9],item[10]]
+                itemRGB = [item[10],item[11],item[12]]
                 # calculate getDistance() with the target input list and reference list parameters
                 dist = getDistance(list, itemRGB)
                 # add to new similarity column the  decimal (1 - (calculated distance / maxdist)
@@ -133,4 +135,5 @@ def getMatches(list, filepath):
     print(sorted_chart[0:3])
 
 #just testing
+print(loadData('Shiseido_products.csv'))
 getMatches([234,206,189],'Book1.csv')
